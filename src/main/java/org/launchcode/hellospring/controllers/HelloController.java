@@ -20,4 +20,8 @@ public class HelloController {
     public String helloWithQueryParam(@RequestParam String name){
         return "Hello, " + name + "!";
     }
+    @GetMapping("hello/{name}")
+    public String helloAgain(@PathVariable String name) {
+        return "Hello, " + name + "!";
+    }
 }
