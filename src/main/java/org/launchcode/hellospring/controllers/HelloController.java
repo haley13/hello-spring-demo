@@ -5,18 +5,18 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @ResponseBody
-//@RequestMapping(value="hello")//says every method w/i this class should begin w/ /hello
 public class HelloController {
 
-    @GetMapping("hello")
-    public String hello() {
-        return "Hello, Spring!";
-    }
+//    @GetMapping("hello")
+//    public String hello() {
+//        return "Hello, Spring!";
+//    }
     @GetMapping("goodbye")
     public String goodbye(){
         return "Goodbye, Spring!";
     }
-    @GetMapping("hi")
+    @GetMapping("hello")
+    @RequestMapping(value = "hello", method = {RequestMethod.GET, RequestMethod.POST})
     public String helloWithQueryParam(@RequestParam String name){
         return "Hello, " + name + "!";
     }
