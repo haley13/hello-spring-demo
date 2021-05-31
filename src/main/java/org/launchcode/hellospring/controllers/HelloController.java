@@ -20,7 +20,7 @@ public class HelloController {
     public String helloWithQueryParam(@RequestParam String name){
         return "Hello, " + name + "!";
     }
-    @GetMapping("hello/{name}")
+    @GetMapping(" {name}")
     public String helloAgain(@PathVariable String name) {
         return "Hello, " + name + "!";
     }
@@ -29,8 +29,9 @@ public class HelloController {
     public String helloForm() {
         return "<html>" +
                 "<body>" +
-                "<form action = 'hello' method = 'post'>" + // submit a request to /hello
+                "<form method= 'POST' action = '/hello'>" + // submit a request to /hello
                 "<input type = 'text' name = 'name' >" +
+                "<input type = 'text' language= 'language" +
                 "<input type = 'submit' value = 'Greet Me!' >" +
                 "</form>" +
                 "</body>" +
