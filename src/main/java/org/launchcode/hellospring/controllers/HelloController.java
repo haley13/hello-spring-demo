@@ -37,7 +37,8 @@ public class HelloController {
                 "<input type = 'submit' value = 'Greet Me!' >" +
                 "</form>";
     }
-    @RequestMapping(method= RequestMethod.POST)
+
+    @RequestMapping(method = RequestMethod.POST)
     public String createMessage(@RequestParam String name, @RequestParam String language) {
         if (name == null) {
             name = "World";
@@ -58,6 +59,6 @@ public class HelloController {
         } else if (language.equals("german")) {
             greeting = "Hallo, ";
         }
-        return greeting + name;
+        return "<p style= 'color: red; text-align: center; margin-top: 20vb; font-size: 30px'>" + greeting + name + "</p>";
     }
 }
