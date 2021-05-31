@@ -13,25 +13,51 @@ public class HelloController {
 //        return "Hello, Spring!";
 //    }
 
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-    public String helloWithQueryParam(@RequestParam String name){
-        return "Hello, " + name + "!";
-    }
-    @GetMapping("{name}")
-    public String helloWithPathParam(@PathVariable String name) {
-        return "Hello, " + name + "!";
-    }
+//    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
+//    public String helloWithQueryParam(@RequestParam String name){
+//        return "Hello, " + name + "!";
+//    }
+
+//    @GetMapping("{name}")
+//    public String helloWithPathParam(@PathVariable String name) {
+//        return "Hello, " + name + "!";
+//    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String helloForm() {
-        return "<html>" +
-                "<body>" +
-                "<form method= 'POST' action = '/hello'>" + // submit a request to /hello
-                "<input type = 'text' name = 'name' >" +
-                //"<input type = 'text' language= 'language" +
+        return "<form method='post'>" +
+                "<input type= 'text' name= 'name'>" +
+                "<select name = 'language'>" +
+                "<option value= 'english'> English </option>" +
+                "<option value= 'french'> French </option>" +
+                "<option value= 'italian'> Italian </option>" +
+                "<option value= 'spanish'> Spanish </option>" +
+                "<option value= 'german'> German </option>" +
+                "</select>" +
                 "<input type = 'submit' value = 'Greet Me!' >" +
-                "</form>" +
-                "</body>" +
-                "</html>";
+                "</form>";
+    }
+    @RequestMapping(method= RequestMethod.POST)
+    public String createMessage(@RequestParam String name, @RequestParam String language) {
+        if (name == null) {
+            name = "World";
+        }
+        String greeting = "";
+        if (language.equals("english")) {
+            greeting = "Hello, ";
+
+        } else if (language.equals("french")) {
+            greeting = "Bonjour, ";
+
+        } else if (language.equals("italian")) {
+            greeting = "Buongiorno, ";
+
+        } else if (language.equals("spanish")) {
+            greeting = "Hola, ";
+
+        } else if (language.equals("german")) {
+            greeting = "Hallo, ";
+        }
+        return greeting + name;
     }
 }
